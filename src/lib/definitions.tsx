@@ -30,3 +30,10 @@ export type Job = {
     id: string,
     title: string
 }
+
+export interface QuestContent {
+    title: string | null;
+    description: string | null;
+    link: string | undefined;
+    badge: boolean;
+  }

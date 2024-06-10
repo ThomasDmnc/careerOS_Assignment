@@ -1,3 +1,5 @@
+import { Quest, QuestContent} from "./definitions"
+
 export const BadgeText : {[key: string]: string} = {
     "install_extension": "Install",
     "submit_application": "Application",
@@ -43,4 +45,73 @@ export const QuestIcon : {[key: string]: JSX.Element} = {
             <path d="m4.4.8-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 3.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 3.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 3 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 4.4.8m3 0-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 6.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 6.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 6 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 7.4.8m3 0-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.252.382l-.019.025-.005.008-.002.002A.5.5 0 0 1 9.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 9.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 9 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 10.4.8"/>
         </svg>
       ),
+}
+
+export const questContent: { [key: string]: (quest: Quest) => QuestContent | QuestContent } ={
+    "install_extension": {
+      title: "Install the CareerOS Chrome extension",
+      description: "Unlock the superpowers of CareerOS with our Chrome Extension. This plugin lets you save companies, contacts, and jobs from Linkedin and other job boards. It also lets you access our messaging template and send Linkedin messages directly from CareerOS.",
+      link: "https://chromewebstore.google.com/detail/careeros-save-jobs-contac/ahkmpgpdcneppdhhdgmmmcgicgfcfmka",
+      badge: true,
+    },
+    "submit_application": (quest: Quest) => ({
+      title: `Submit your application for ${quest.job.title} at ${quest.company?.name}`,
+      description: `Deadline: ${new Date(quest.due_date).toLocaleDateString("en", { year: "numeric", month: "2-digit", day: "numeric" })}`,
+      link: quest.company?.linkedin_url,
+      badge: false,
+    }),
+    "resolve-comment": {
+      title: `Resolve a comment from [CA Name]`,
+      description: "You have an unresolved comment from your Career Advisor.",
+      link: "https://app.thecareeros.com/",
+      badge: false,
+    },
+    "save_first_company": {
+      title: "Save your first company",
+      description: "Browse our company database for your favorite companies or new inspiration and save your first company to get started.",
+      link: "https://app.thecareeros.com/",
+      badge: false,
+    },
+    "add_contact": ( quest: Quest ) => ({
+      title: `Save a contact at ${quest.company?.name}`,
+      description: `You recently saved ${quest.company?.name}. The next step is to now save a contact who’s working there to start networking with.`,
+      link: quest.company?.linkedin_url,
+      badge: false,
+    }),
+    "send_linkedin_message": (quest: Quest) => ({
+      title: `Send LinkedIn Message to ${quest.contact?.first_name} ${quest.contact.last_name} at ${quest.company?.name}`,
+      description: "Send the LinkedIn message",
+      link: quest.contact?.linkedin_url,
+      badge: false,
+    }),
+    "send_linkedin_connection": (quest: Quest) => ({
+      title: `Send LinkedIn invitation to ${quest.contact?.first_name} ${quest.contact.last_name} at $quest.company?.name}`,
+      description: "Send an invitation with a tailored message to your new contact. Our AI will help you!",
+      link: quest.contact?.linkedin_url,
+      badge: false,
+    }),
+    "send_first_email": (quest: Quest) => ({
+      title: `Send First Email to ${quest.contact?.first_name} ${quest.contact.last_name} at $quest.company?.name}`,
+      description: `Send First Email to ${quest.contact?.first_name} ${quest.contact.last_name} at ${quest.company?.name} to get the conversation started`,
+      link: quest.contact?.linkedin_url,
+      badge: false,
+    }),
+    "add_new_contact": (quest: Quest) => ({
+      title: `Save a new contact at ${quest.company?.name}`,
+      description: "Add another contact to this company to start networking.",
+      link: quest.company?.linkedin_url,
+      badge: false,
+    }),
+    "schedule_coffee_chat": (quest: Quest) => ({
+      title: `Schedule a coffe what with ${quest.contact?.first_name} ${quest.contact.last_name} at ${quest.company?.name}`,
+      description: "Get unique insights from your new contact by scheduling an informational interview with them. Make sure to use our coffee chat tips to prepare for your meeting.",
+      link: quest.contact?.linkedin_url,
+      badge: false,
+    }),
+    "send_follow_up_email": (quest: Quest) => ({
+        title: `Send Follow Up Email to ${quest.contact.first_name} ${quest.contact.last_name} at ${quest.company?.name}`,
+        description:`Send a follow-up email to ${quest.contact.first_name} ${quest.contact.last_name} at ${quest.company?.name} to get a conversation started.`,
+        link: quest.contact?.linkedin_url,
+        badge: false,
+    }),
 }
