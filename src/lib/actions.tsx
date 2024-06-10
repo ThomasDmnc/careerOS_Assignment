@@ -1,7 +1,7 @@
 import { Quest, QuestContent } from "./definitions";
 import { questContent } from "./content";
 
-// This fetch method should have a UserId as a parameter to get all quests for a user 
+// This fetch method should have a UserId as a parameter to get all quests for a user
 export async function retrieveAllQuests(): Promise<Quest[]> {
   try {
     const response = await fetch("/quests.json");
@@ -22,7 +22,7 @@ export function generateQuestContent(quest: Quest): QuestContent {
   let link = undefined;
   let badge = false;
 
-  const content = questContent[quest.type]
+  const content = questContent[quest.type];
 
   if (content) {
     if (typeof content === "function") {
@@ -38,6 +38,6 @@ export function generateQuestContent(quest: Quest): QuestContent {
       badge = content.badge;
     }
   }
-  
+
   return { title, description, link, badge };
 }

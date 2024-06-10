@@ -1,11 +1,11 @@
 import "./App.scss";
-import Container from "./ui/QuestsContainer";
+import QuestsContainer from "./ui/QuestsContainer";
 
 function App() {
   return (
     <div className="homepage-container">
       <div className="homepage-col">
-        <Container />
+        <QuestsContainer />
       </div>
       <div className="homepage-col">
       </div>

@@ -61,7 +61,7 @@ export const questContent: { [key: string]: (quest: Quest) => QuestContent | Que
       badge: false,
     }),
     "resolve-comment": {
-      title: `Resolve a comment from [CA Name]`,
+      title: "Resolve a comment from [CA Name]",
       description: "You have an unresolved comment from your Career Advisor.",
       link: "https://app.thecareeros.com/",
       badge: false,

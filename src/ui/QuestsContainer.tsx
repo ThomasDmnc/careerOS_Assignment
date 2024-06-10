@@ -7,7 +7,7 @@ import {
 import QuestTile from "./QuestTile";
 import "./QuestsContainer.scss";
 
-export default function Container() {
+export default function QuestsContainer() {
   const [quests, setQuests] = useState<Quest[]>([]);
 
   useEffect(() => {
