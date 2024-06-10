@@ -1,29 +1,26 @@
 import './QuestTile.scss'
+import {BadgeText, QuestIcon} from "../lib/content";
 
-const BadgeText : {[key: string]: string} = {
-    "install_extension": "Install",
-    "submit_application": "Application",
-    "resolve-comment": "See comment",
-    "save-company": "Explore",
-    "save_first_company": "Browse",
-    "add_contact": "Add contact",
-    "send_linkedin_message": "Reach Out",
-    "send_linkedin_connection": "Connect",
-    "send_first_email": "Send Email",
-    "add_new_contact": "Save Contact",
-    "schedule_coffee_chat": "Message",
-    "send_follow_up_email": "Follow up",
-    "respond_to_email": "Respond",
-}
-
-export default function QuestTile({questId, questType, questTitle,  questDescription, questLink, questBadge}: {questId: string, questType: string , questTitle: string, questDescription: string, questLink: string | null, questBadge: boolean}) {
+export default function QuestTile({questId, questType, questTitle, questDescription, questLink, questBadge, contactImgUrl, companyLogoUrl}: {questId: string, questType: string , questTitle: string, questDescription: string, questLink: string | undefined, questBadge: boolean, contactImgUrl: string | undefined, companyLogoUrl:string | undefined}) {
     return (
       <div className="questTile-container" key={questId}>
-        <div className="questTile-container__icon">Icon</div>
+        <div className="questTile-container__icon">
+          {QuestIcon.hasOwnProperty(questType) ? (QuestIcon[questType]) : null}
+          
+          {!QuestIcon.hasOwnProperty(questType) && contactImgUrl ? (
+            <img src={contactImgUrl} alt="contact" className="questTile-container__icon__image"/>
+          ) : null }
+          
+          {!QuestIcon.hasOwnProperty(questType) && !contactImgUrl && companyLogoUrl ? (
+            <img src={companyLogoUrl} alt="contact" className="questTile-container__icon__image"/>
+          ) : null }
+        </div>
+        
         <div className="questTile-container__content">
           <p className="questTile_title">{questTitle}</p>
           <p className="questTile_description">{questDescription}</p>
         </div>
+        
         <div className="questTile-container__button">
           {questBadge ? (
             <a

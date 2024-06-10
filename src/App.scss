@@ -1,17 +1,18 @@
+@use './ui/variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 body {
-    background-color: #FBFBFB;
+    background-color: variables.$background-color;
 }
 
-.homepage_container{
+.homepage-container{
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: center;
 }
 
-.homepage_col{
+.homepage-col{
     display: flex;
     flex-direction: column;
     width: 50%;

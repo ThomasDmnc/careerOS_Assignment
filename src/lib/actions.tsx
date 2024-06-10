@@ -1,6 +1,6 @@
 import { Quest } from "./definitions";
 
-//
+// This fetch method should have a UserId as a parameter to get all quests linked a user 
 export async function retrieveAllQuests(): Promise<Quest[]> {
   try {
     const response = await fetch("/quests.json");
@@ -50,12 +50,12 @@ export async function retrieveAllQuests(): Promise<Quest[]> {
 export function generateQuestContent(quest: Quest): {
   title: string | null;
   description: string | null;
-  link: string | null;
+  link: string | undefined;
   badge: boolean;
 } {
   let title = null;
   let description = null;
-  let link = null;
+  let link = undefined;
   let badge = false;
 
   switch (quest.type) {

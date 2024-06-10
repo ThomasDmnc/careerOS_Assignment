@@ -5,7 +5,7 @@ import {
   generateQuestContent,
 } from "../lib/actions";
 import QuestTile from "./QuestTile";
-import "./Container.scss";
+import "./QuestsContainer.scss";
 
 export default function Container() {
   const [quests, setQuests] = useState<Quest[]>([]);
@@ -48,6 +48,8 @@ export default function Container() {
                   questTitle={title}
                   questDescription={description}
                   questLink={link}
+                  contactImgUrl={quest.contact?.profile_image}
+                  companyLogoUrl={quest.company?.logo_url}
                   questBadge={badge}
                   questType={quest.type}
                 />
