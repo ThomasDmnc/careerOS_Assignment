@@ -1,18 +1,16 @@
-import './App.scss'
-import Container  from './ui/Container'
+import "./App.scss";
+import Container from "./ui/Container";
 function App() {
-
   return (
-    <>
-      <div>
-        <p>Column 1</p>
-        < Container /> 
+    <div className="homepage_container">
+      <div className="homepage_col">
+        <Container />
+        <Container />
       </div>
-      <div>
-        <p>Column 2</p>
+      <div className="homepage_col">
       </div>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

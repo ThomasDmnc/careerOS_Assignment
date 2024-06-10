@@ -1,0 +1,58 @@
+.questTile-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    padding: 16px;
+    height: 100px;
+    box-shadow: 0px 0px 4px 1px rgba(151, 71, 255, 0.15);
+}
+
+
+.questTile-container__content{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+}
+
+.questTile_title{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #141D1D;
+}
+
+.questTile_title:hover {
+    cursor: pointer; 
+    text-decoration: underline;
+}
+
+.questTile_description{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #6F7979;
+}
+
+
+.questTile_badge {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 8px 4px 8px;
+    column-gap: 4px;
+    width: fit-content;
+    text-decoration: none;
+    height: 32px;
+    background: rgba(0, 72, 80, 1);
+
+}

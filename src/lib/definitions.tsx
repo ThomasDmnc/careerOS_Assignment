@@ -1,7 +1,7 @@
 export type Quest = {
     id: string,
     user_id: string,
-    type: QuestType,
+    type: string,
     status: string,
     experience_points: number,
     due_date: string,
